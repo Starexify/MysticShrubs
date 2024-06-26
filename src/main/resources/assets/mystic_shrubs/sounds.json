@@ -1,0 +1,26 @@
+{
+  "emerald_shard_pickup": {
+    "subtitles": "sounds.mystic_shrubs.emerald_shard_pickup",
+    "sounds": [
+      "mystic_shrubs:emerald_shard_pickup"
+    ]
+  },
+  "emerald_shard_used": {
+    "subtitles": "sounds.mystic_shrubs.emerald_shard_used",
+    "sounds": [
+      "mystic_shrubs:emerald_shard_used"
+    ]
+  },
+  "emerald_piece_used": {
+    "subtitles": "sounds.mystic_shrubs.emerald_piece_used",
+    "sounds": [
+      "mystic_shrubs:emerald_piece_used"
+    ]
+  },
+  "collect_heart": {
+    "subtitles": "sounds.mystic_shrubs.collect_heart",
+    "sounds": [
+      "mystic_shrubs:collect_heart"
+    ]
+  }
+}
