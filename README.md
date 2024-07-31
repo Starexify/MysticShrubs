@@ -8,8 +8,8 @@
 
 <p align="center">
   <img alt="GitHub Issues" src="https://img.shields.io/github/issues/Starexify/MysticShrubs?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FStarexify%2FMysticShrubs%2Fissues">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/MysticShrubs?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FStarexify%2FMysticShrubs%2FLICENSE">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/MysticShrubs?style=for-the-badge&color=1B3193&link=https%3A%2F%2Fgithub.com%2FStarexify%2FMysticShrubs%2Fblob%2F1.21%2FLICENSE">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/MysticShrubs?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FStarexify%2FMysticShrubs%2Fblob%2Fmain%2FLICENSE">
+
 </p>
 
 <p align="center"><a href="https://minecraft.curseforge.com/projects/mystic-shrubs"><img alt="CurseForge Downloads" src="http://cf.way2muchnoise.eu/full_cosmicore_downloads.svg?badge_style=flat"></a></p>
