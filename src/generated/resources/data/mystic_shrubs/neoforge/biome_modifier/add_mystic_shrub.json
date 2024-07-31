@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_plains",
+  "features": "mystic_shrubs:mystic_shrub_placed",
+  "step": "vegetal_decoration"
+}

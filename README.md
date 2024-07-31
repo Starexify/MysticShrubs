@@ -1,27 +1,14 @@
 
-Installation information
-=======
+<p align="center"><img width=85% src="https://raw.githubusercontent.com/Starexify/Cosmicore/1.21/src/main/resources/cosmicore_logo.png?token=GHSAT0AAAAAACTBPAKN3YXSWJCRIDHMQOYSZVHL2QA"></p>
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions at [github](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+<p align="center">
+  <a href="https://minecraft.curseforge.com/projects/cosmicore"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
+  <a href="https://modrinth.com/mod/cosmicore"><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
+</p>
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+<p align="center">
+  <img alt="GitHub Issues" src="https://img.shields.io/github/issues/Starexify/Cosmicore?style=for-the-badge&color=1B3193&link=https%3A%2F%2Fgithub.com%2FStarexify%2FCosmicore%2Fissues">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/Cosmicore?style=for-the-badge&color=1B3193&link=https%3A%2F%2Fgithub.com%2FStarexify%2FCosmicore%2Fblob%2F1.21%2FLICENSE">
+</p>
 
-> **Note**: For Eclipse, use tasks in `Launch Group` instead of ones founds in `Java Application`. A preparation task must run before launching the game. NeoGradle uses launch groups to do these subsequently.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+<p align="center"><a href="https://minecraft.curseforge.com/projects/cosmicore"><img alt="CurseForge Downloads" src="http://cf.way2muchnoise.eu/full_cosmicore_downloads.svg?badge_style=flat"></a></p>

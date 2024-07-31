@@ -23,19 +23,30 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 import net.nova.mysticshrubs.init.ModItems;
 
 public class MysticShrubBlock extends CropBlock {
     public static final int MAX_AGE = 1;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
+            Block.box(2, 0, 2, 14, 3, 14),
+            Block.box(1.5, 0, 1.5, 14.5, 14, 14.5)
+    };
 
     public MysticShrubBlock(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
-        return ModItems.MYSTICAL_SEED;
+    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return SHAPE_BY_AGE[this.getAge(pState)];
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        // Allow placement on GRASS_BLOCK and DIRT
+        return pState.is(Blocks.GRASS_BLOCK) || pState.is(Blocks.DIRT);
     }
 
     @Override
@@ -49,14 +60,29 @@ public class MysticShrubBlock extends CropBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AGE);
+    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (!pLevel.isAreaLoaded(pPos, 1))
+            return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+        int i = this.getAge(pState);
+        if (i < this.getMaxAge()) {
+            float f = getGrowthSpeed(pState, pLevel, pPos);
+            // Adjust the growth speed here by adding a delay or reducing probability
+            float modifiedGrowthSpeed = f * 0.2F; // Doubling the growth time
+            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+                pLevel.setBlock(pPos, this.getStateForAge(i + 1), 2);
+                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
+            }
+        }
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        // Allow placement on GRASS_BLOCK and DIRT
-        return pState.is(Blocks.GRASS_BLOCK) || pState.is(Blocks.DIRT);
+    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return pLevel.canSeeSky(pPos) && super.canSurvive(pState, pLevel, pPos);
+    }
+
+    @Override
+    protected ItemLike getBaseSeedId() {
+        return ModItems.MYSTICAL_SEED;
     }
 
     @Override
@@ -64,18 +90,21 @@ public class MysticShrubBlock extends CropBlock {
         return false;
     }
 
-    // On player right-click
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(AGE);
+    }
 
+    // On player right-click
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide) {
             if (pState.getValue(AGE).equals(1)) {
+                // Drop item for block state 1
+                pLevel.destroyBlock(pPos, true);
+
                 // Set the age to 0
                 pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-
-                // Drop item for block state 1
-                //pLevel.destroyBlock(pPos, true);
-                //MysticShrubDrops.execute(pLevel, pPos.getX()+0.5, pPos.getY(), pPos.getZ()+0.5);
             }
         }
         return ItemInteractionResult.SUCCESS;
@@ -85,12 +114,11 @@ public class MysticShrubBlock extends CropBlock {
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide) {
             if (pState.getValue(AGE).equals(1)) {
+                // Drop item for block state 1
+                pLevel.destroyBlock(pPos, true);
+
                 // Set the age to 0
                 pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-
-                // Drop item for block state 1
-                //pLevel.destroyBlock(pPos, true);
-                //MysticShrubDrops.execute(pLevel, pPos.getX()+0.5, pPos.getY(), pPos.getZ()+0.5);
             }
         }
         return InteractionResult.SUCCESS;
@@ -119,34 +147,4 @@ public class MysticShrubBlock extends CropBlock {
             return 1.0f;
         }
     }
-
-    @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        if (pState.getValue(AGE) == 0) {
-            return box(2, 0, 2, 14, 3, 14);
-        } else {
-            return box(2, 0, 2, 14, 14, 14);
-        }
-    }
-
-    @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return pLevel.canSeeSky(pPos) && super.canSurvive(pState, pLevel, pPos);
-    }
-
-    @Override
-    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (!pLevel.isAreaLoaded(pPos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        int i = this.getAge(pState);
-        if (i < this.getMaxAge()) {
-            float f = getGrowthSpeed(this, pLevel, pPos);
-            // Adjust the growth speed here by adding a delay or reducing probability
-            float modifiedGrowthSpeed = f * 0.2F; // Doubling the growth time
-            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / modifiedGrowthSpeed) + 1) == 0)) {
-                pLevel.setBlock(pPos, this.getStateForAge(i + 1), 2);
-                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
-            }
-        }
-    }
-
 }

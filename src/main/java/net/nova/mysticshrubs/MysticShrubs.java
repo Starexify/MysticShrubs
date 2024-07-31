@@ -1,9 +1,7 @@
 package net.nova.mysticshrubs;
 
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Items;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.nova.mysticshrubs.init.ModBlocks;
 import net.nova.mysticshrubs.init.ModItems;
 import net.nova.mysticshrubs.init.ModSounds;
@@ -28,14 +26,28 @@ public class MysticShrubs {
         bus.addListener(this::addCreative);
     }
 
+    // Add items to the vanilla creative tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        final ResourceKey<CreativeModeTab> tab = event.getTabKey();
-        if (tab.equals(CreativeModeTabs.INGREDIENTS)) {
-            event.getEntries().putAfter(Items.EMERALD.getDefaultInstance(), ModItems.EMERALD_PIECE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(ModItems.EMERALD_PIECE.get().getDefaultInstance(), ModItems.EMERALD_SHARD.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        if (event.getTabKey().equals(CreativeModeTabs.INGREDIENTS)) {
+            event.getEntries().putAfter(keyToPutAfter(event, Items.EMERALD), ModItems.EMERALD_PIECE.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(keyToPutAfter(event, ModItems.EMERALD_PIECE.get()), ModItems.EMERALD_SHARD.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-        if (tab.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
-            event.getEntries().putAfter(Items.NETHER_WART.getDefaultInstance(), ModItems.MYSTICAL_SEED.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
+            event.getEntries().putAfter(keyToPutAfter(event, Items.NETHER_WART), ModItems.MYSTICAL_SEED.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
+    }
+
+    private ItemStack keyToPutAfter(BuildCreativeModeTabContentsEvent event, Item item) {
+        for (var iter = event.getEntries().iterator(); iter.hasNext(); ) {
+            var stack = iter.next();
+            if (stack.getKey().getItem() == item) {
+                return stack.getKey();
+            }
+        }
+        return null;
+    }
+
+    public static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }
