@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Starexify/MysticShrubs/issues"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/Starexify/MysticShrubs?style=for-the-badge&logoColor=F11AEF"></a>
-  <a href="https://github.com/Starexify/MysticShrubs/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/MysticShrubs?style=for-the-badge&logoColor=F11AEF"></a>
+  <a href="https://github.com/Starexify/MysticShrubs/issues"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/Starexify/MysticShrubs?style=for-the-badge&color=F11AEF"></a>
+  <a href="https://github.com/Starexify/MysticShrubs/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/Starexify/MysticShrubs?style=for-the-badge&color=F11AEF"></a>
 
 </p>
 
