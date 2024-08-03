@@ -12,22 +12,18 @@ import net.nova.mysticshrubs.blocks.MysticShrubBlock;
 
 import java.util.function.Supplier;
 
-import static  net.nova.mysticshrubs.MysticShrubs.MODID;
+import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
-    public static final DeferredBlock<Block> MYSTIC_SHRUB = registerBlock("mystic_shrub",
-            () -> new MysticShrubBlock(BlockBehaviour.Properties
-                    .of()
+    public static final DeferredBlock<Block> MYSTIC_SHRUB = registerBlock("mystic_shrub", () -> new MysticShrubBlock(
+            BlockBehaviour.Properties.of()
                     .noCollission()
                     .noOcclusion()
                     .sound(SoundType.GRASS)
-                    .lightLevel((state) ->
-                    {
-                        return 5;
-                    })
-            ));
+                    .lightLevel(light -> 5)
+    ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

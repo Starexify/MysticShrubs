@@ -4,6 +4,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
+import net.nova.mysticshrubs.datagen.DataGenerators;
 import net.nova.mysticshrubs.init.ModBlocks;
 import net.nova.mysticshrubs.init.ModItems;
 import net.nova.mysticshrubs.init.ModSounds;
@@ -25,6 +26,8 @@ public class MysticShrubs {
     public static final Logger logger = LoggerFactory.getLogger(MysticShrubs.class);
 
     public MysticShrubs(IEventBus bus) {
+        bus.addListener(DataGenerators::gatherData);
+
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
         ModSounds.SOUND_EVENTS.register(bus);

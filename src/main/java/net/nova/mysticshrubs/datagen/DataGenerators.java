@@ -7,6 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.nova.mysticshrubs.MysticShrubs;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -17,12 +18,15 @@ public class DataGenerators {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        try {
+            DataGenerator generator = event.getGenerator();
+            PackOutput output = generator.getPackOutput();
+            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(true, new ModLootTableProvider(output, lookupProvider));
-        generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
+            generator.addProvider(true, new ModLootTableProvider(output, lookupProvider));
+            generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
+        } catch (RuntimeException e) {
+            MysticShrubs.logger.error("Failed to gather data", e);
+        }
     }
 }
