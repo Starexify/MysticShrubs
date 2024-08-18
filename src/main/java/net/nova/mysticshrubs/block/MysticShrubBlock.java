@@ -84,27 +84,23 @@ public class MysticShrubBlock extends CropBlock {
     // On player interactions drops
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide) {
-            if (pState.getValue(AGE).equals(1)) {
-                // Drop item for age 1 and set the age to 0
-                pLevel.destroyBlock(pPos, true);
-                pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
+        if (!pLevel.isClientSide && pState.getValue(AGE).equals(1)) {
+            // Drop item for age 1 and set the age to 0
+            pLevel.destroyBlock(pPos, true);
+            pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
 
-                return ItemInteractionResult.SUCCESS;
-            }
+            return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.FAIL;
     }
 
     @Override
-    public boolean onDestroyedByPlayer(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, boolean willHarvest, FluidState fluid) {
-        if (!pLevel.isClientSide) {
-            if (pState.getValue(AGE).equals(1)) {
-                // Drop item for age 1 and set the age to 0
-                pLevel.setBlock(pPos, pState.setValue(AGE, 0), 3);
-            }
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if (!level.isClientSide && state.getValue(AGE).equals(1)) {
+            super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
+            return level.setBlock(pos, state.setValue(AGE, 0), 3);
         }
-        return false;
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     // Slower destroy speed for age 0
