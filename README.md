@@ -1,7 +1,7 @@
 ![Mystic Shrubs Logo](https://github.com/Starexify/MysticShrubs/blob/main/src/main/resources/mystic_shrubs_logo.png?raw=true)
 
 <p align="center">
-  <a href="https://minecraft.curseforge.com/projects/mystic-shrubs"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/mystic-shrubs"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
   <a href="https://modrinth.com/mod/mystic-shrubs"><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
 </p>
 
