@@ -1,15 +1,11 @@
 package net.nova.mysticshrubs.item;
 
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.init.Sounds;
 
 public class BaseItem extends Item {
     protected final int requiredCount = 8;
