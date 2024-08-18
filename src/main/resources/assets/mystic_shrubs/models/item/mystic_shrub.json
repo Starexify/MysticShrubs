@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mystic_shrubs:block/mystic_shrub_stage0"
-  }
-}

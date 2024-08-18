@@ -1,10 +1,9 @@
-package net.nova.mysticshrubs.blocks;
+package net.nova.mysticshrubs.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +23,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
-import net.nova.mysticshrubs.init.ModItems;
+import net.nova.mysticshrubs.init.MSItems;
 
 public class MysticShrubBlock extends CropBlock {
     public static final int MAX_AGE = 1;
@@ -36,16 +35,11 @@ public class MysticShrubBlock extends CropBlock {
 
     public MysticShrubBlock(Properties pProperties) {
         super(pProperties);
-    }
-
-    @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE_BY_AGE[this.getAge(pState)];
+        this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        // Allow placement on GRASS_BLOCK and DIRT
         return pState.is(Blocks.GRASS_BLOCK) || pState.is(Blocks.DIRT);
     }
 
@@ -61,16 +55,13 @@ public class MysticShrubBlock extends CropBlock {
 
     @Override
     protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (!pLevel.isAreaLoaded(pPos, 1))
-            return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+        if (!pLevel.isAreaLoaded(pPos, 1)) return;
         int i = this.getAge(pState);
         if (i < this.getMaxAge()) {
             float f = getGrowthSpeed(pState, pLevel, pPos);
-            // Adjust the growth speed here by adding a delay or reducing probability
-            float modifiedGrowthSpeed = f * 0.2F; // Doubling the growth time
-            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+            if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
                 pLevel.setBlock(pPos, this.getStateForAge(i + 1), 2);
-                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
+                CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
             }
         }
     }
@@ -82,7 +73,7 @@ public class MysticShrubBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.MYSTICAL_SEED;
+        return MSItems.MYSTICAL_SEED;
     }
 
     @Override
@@ -90,55 +81,33 @@ public class MysticShrubBlock extends CropBlock {
         return false;
     }
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AGE);
-    }
-
-    // On player right-click
+    // On player interactions drops
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide) {
             if (pState.getValue(AGE).equals(1)) {
-                // Drop item for block state 1
+                // Drop item for age 1 and set the age to 0
                 pLevel.destroyBlock(pPos, true);
-
-                // Set the age to 0
                 pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
+
+                return ItemInteractionResult.SUCCESS;
             }
         }
-        return ItemInteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide) {
-            if (pState.getValue(AGE).equals(1)) {
-                // Drop item for block state 1
-                pLevel.destroyBlock(pPos, true);
-
-                // Set the age to 0
-                pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-            }
-        }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.FAIL;
     }
 
     @Override
     public boolean onDestroyedByPlayer(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, boolean willHarvest, FluidState fluid) {
-        // Retain the values of the blocks
-        boolean retainValues = super.onDestroyedByPlayer(pState, pLevel, pPos, pPlayer, willHarvest, fluid);
         if (!pLevel.isClientSide) {
             if (pState.getValue(AGE).equals(1)) {
-                // Set the age to 0
-                pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-
-                //MysticShrubDrops.execute(pLevel, pPos.getX()+0.5, pPos.getY(), pPos.getZ()+0.5);
+                // Drop item for age 1 and set the age to 0
+                pLevel.setBlock(pPos, pState.setValue(AGE, 0), 3);
             }
         }
-        return retainValues;
+        return false;
     }
 
+    // Slower destroy speed for age 0
     @Override
     protected float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
         if (pState.getValue(AGE) == 0) {
@@ -146,5 +115,16 @@ public class MysticShrubBlock extends CropBlock {
         } else {
             return 1.0f;
         }
+    }
+
+    // Rendering speed
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(AGE);
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return SHAPE_BY_AGE[this.getAge(pState)];
     }
 }

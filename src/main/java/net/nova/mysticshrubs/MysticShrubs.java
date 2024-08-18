@@ -1,21 +1,18 @@
 package net.nova.mysticshrubs;
 
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
-import net.minecraft.world.level.ItemLike;
-import net.nova.mysticshrubs.data.DataGenerators;
-import net.nova.mysticshrubs.init.ModBlocks;
-import net.nova.mysticshrubs.init.ModItems;
-import net.nova.mysticshrubs.init.ModSounds;
-import org.slf4j.Logger;
-
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.nova.mysticshrubs.data.DataGenerators;
+import net.nova.mysticshrubs.init.MSBlocks;
+import net.nova.mysticshrubs.init.MSItems;
+import net.nova.mysticshrubs.init.Sounds;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.function.Supplier;
 
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
@@ -26,29 +23,19 @@ public class MysticShrubs {
     public static final Logger logger = LoggerFactory.getLogger(MysticShrubs.class);
 
     public MysticShrubs(IEventBus bus) {
+        MSBlocks.BLOCKS.register(bus);
+        MSItems.ITEMS.register(bus);
+        Sounds.SOUND_EVENTS.register(bus);
+
         bus.addListener(DataGenerators::gatherData);
-
-        ModBlocks.BLOCKS.register(bus);
-        ModItems.ITEMS.register(bus);
-        ModSounds.SOUND_EVENTS.register(bus);
-
-        bus.addListener(this::addCreative);
     }
 
-    // Add items to the vanilla creative tabs
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        ResourceKey<CreativeModeTab> tabKey = event.getTabKey();
-        if (tabKey.equals(CreativeModeTabs.INGREDIENTS)) {
-            putAfter(Items.EMERALD, ModItems.EMERALD_PIECE, event);
-            putAfter(ModItems.EMERALD_PIECE.get(), ModItems.EMERALD_SHARD, event);
+    public static void playSound(Level level, Player player, SoundEvent sound) {
+        if (!player.level().isClientSide) {
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), sound, SoundSource.PLAYERS, 1.0f, 1.0f);
+        } else {
+            level.playLocalSound(player.getX(), player.getY(), player.getZ(), sound, SoundSource.PLAYERS, 1.0f, 1.0f, false);
         }
-        if (tabKey.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
-            putAfter(Items.NETHER_WART, ModItems.MYSTICAL_SEED, event);
-        }
-    }
-
-    private static void putAfter(Item item, Supplier<? extends ItemLike> itemAfter, BuildCreativeModeTabContentsEvent event) {
-        event.insertAfter(item.getDefaultInstance(), itemAfter.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
     public static ResourceLocation rl(String path) {

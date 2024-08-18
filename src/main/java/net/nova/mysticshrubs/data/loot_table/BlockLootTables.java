@@ -14,8 +14,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.blocks.MysticShrubBlock;
-import net.nova.mysticshrubs.init.ModBlocks;
+import net.nova.mysticshrubs.block.MysticShrubBlock;
+import net.nova.mysticshrubs.init.MSBlocks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -32,10 +32,10 @@ public class BlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         LootItemCondition.Builder lootitemcondition$builder = LootItemBlockStatePropertyCondition
-                .hasBlockStateProperties(ModBlocks.MYSTIC_SHRUB.get())
+                .hasBlockStateProperties(MSBlocks.MYSTIC_SHRUB.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MysticShrubBlock.AGE, 1));
 
-        this.add(ModBlocks.MYSTIC_SHRUB.get(), this.applyExplosionDecay(ModBlocks.MYSTIC_SHRUB.get(),
+        this.add(MSBlocks.MYSTIC_SHRUB.get(), this.applyExplosionDecay(MSBlocks.MYSTIC_SHRUB.get(),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool().when(lootitemcondition$builder)
                                 .add(LootItem.lootTableItem(BuiltInRegistries.ITEM.get(MysticShrubs.rl("heart_drop")))

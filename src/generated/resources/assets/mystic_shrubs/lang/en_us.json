@@ -1,0 +1,11 @@
+{
+  "block.mystic_shrubs.mystic_shrub": "Mystic Shrub",
+  "item.mystic_shrubs.emerald_piece": "Emerald Piece",
+  "item.mystic_shrubs.emerald_shard": "Emerald Shard",
+  "item.mystic_shrubs.heart_drop": "Heart Drop",
+  "item.mystic_shrubs.mystical_seed": "Mystical Seed",
+  "sounds.mystic_shrubs.collect_heart": "Collected Heart",
+  "sounds.mystic_shrubs.emerald_piece_used": "Emerald Piece used",
+  "sounds.mystic_shrubs.emerald_shard_pickup": "Picked up Emerald Shard",
+  "sounds.mystic_shrubs.emerald_shard_used": "Emerald Shard used"
+}

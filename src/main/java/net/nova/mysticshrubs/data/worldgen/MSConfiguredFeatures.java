@@ -11,9 +11,9 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConf
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.init.ModBlocks;
+import net.nova.mysticshrubs.init.MSBlocks;
 
-import static net.nova.mysticshrubs.blocks.MysticShrubBlock.AGE;
+import static net.nova.mysticshrubs.block.MysticShrubBlock.AGE;
 
 public class MSConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MYSTIC_SHRUB_PATCH = registerKey("mystic_shrub");
@@ -22,7 +22,7 @@ public class MSConfiguredFeatures {
         context.register(MSConfiguredFeatures.MYSTIC_SHRUB_PATCH,
                 new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(8, 4, 3,
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(AGE, 1))),
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(MSBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(AGE, 1))),
                                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE))));
     }
 
