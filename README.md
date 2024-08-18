@@ -1,4 +1,4 @@
-<p align="center"><img width=85% src="https://raw.githubusercontent.com/Starexify/MysticShrubs/main/src/main/resources/mystic_shrubs_logo.png?token=GHSAT0AAAAAACTBPAKNL3JURXLNIEX2UESSZVJ5Q2A"></p>
+![Mystic Shrubs Logo](https://github.com/Starexify/MysticShrubs/blob/main/src/main/resources/mystic_shrubs_logo.png?raw=true)
 
 <p align="center">
   <a href="https://minecraft.curseforge.com/projects/mystic-shrubs"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
