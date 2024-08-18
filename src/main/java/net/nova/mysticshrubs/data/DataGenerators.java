@@ -1,13 +1,13 @@
-package net.nova.mysticshrubs.datagen;
+package net.nova.mysticshrubs.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.nova.mysticshrubs.MysticShrubs;
+import net.nova.mysticshrubs.data.loot_table.MSLootTableProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,8 +23,9 @@ public class DataGenerators {
             PackOutput output = generator.getPackOutput();
             CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-            generator.addProvider(true, new ModLootTableProvider(output, lookupProvider));
-            generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
+            generator.addProvider(true, new MSLootTableProvider(output, lookupProvider));
+            generator.addProvider(true, new DatapackProvider(output, lookupProvider));
+
         } catch (RuntimeException e) {
             MysticShrubs.logger.error("Failed to gather data", e);
         }

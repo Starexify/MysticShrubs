@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.worldgen;
+package net.nova.mysticshrubs.data.worldgen;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -15,11 +15,11 @@ import net.nova.mysticshrubs.init.ModBlocks;
 
 import static net.nova.mysticshrubs.blocks.MysticShrubBlock.AGE;
 
-public class ModConfiguredFeatures {
+public class MSConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MYSTIC_SHRUB_PATCH = registerKey("mystic_shrub");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        context.register(ModConfiguredFeatures.MYSTIC_SHRUB_PATCH,
+        context.register(MSConfiguredFeatures.MYSTIC_SHRUB_PATCH,
                 new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(8, 4, 3,
                         PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(AGE, 1))),

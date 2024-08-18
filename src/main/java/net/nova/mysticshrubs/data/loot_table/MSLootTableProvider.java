@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.datagen;
+package net.nova.mysticshrubs.data.loot_table;
 
 import com.google.common.collect.Sets;
 import net.minecraft.core.HolderLookup;
@@ -10,7 +10,6 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.nova.mysticshrubs.datagen.loot.ModBlockLootTables;
 
 import java.util.List;
 import java.util.Set;
@@ -19,10 +18,10 @@ import java.util.stream.Collectors;
 
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
-public class ModLootTableProvider extends LootTableProvider {
+public class MSLootTableProvider extends LootTableProvider {
 
-    public ModLootTableProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
-        super(pOutput, Set.of(), List.of(new SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)), pRegistries);
+    public MSLootTableProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+        super(pOutput, Set.of(), List.of(new SubProviderEntry(BlockLootTables::new, LootContextParamSets.BLOCK)), pRegistries);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.worldgen;
+package net.nova.mysticshrubs.data.worldgen;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -13,13 +13,13 @@ import net.nova.mysticshrubs.MysticShrubs;
 
 import java.util.List;
 
-public class ModPlacedFeatures {
+public class MSPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MYSTIC_SHRUB_PLACED = registerKey("mystic_shrub_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, MYSTIC_SHRUB_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.MYSTIC_SHRUB_PATCH),
+        register(context, MYSTIC_SHRUB_PLACED, configuredFeatures.getOrThrow(MSConfiguredFeatures.MYSTIC_SHRUB_PATCH),
                 VegetationPlacements.worldSurfaceSquaredWithCount(3)
         );
     }

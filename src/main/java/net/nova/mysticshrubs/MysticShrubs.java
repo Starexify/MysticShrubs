@@ -4,7 +4,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
-import net.nova.mysticshrubs.datagen.DataGenerators;
+import net.nova.mysticshrubs.data.DataGenerators;
 import net.nova.mysticshrubs.init.ModBlocks;
 import net.nova.mysticshrubs.init.ModItems;
 import net.nova.mysticshrubs.init.ModSounds;

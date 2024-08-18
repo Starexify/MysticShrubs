@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.datagen.loot;
+package net.nova.mysticshrubs.data.loot_table;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
-public class ModBlockLootTables extends BlockLootSubProvider {
-    public ModBlockLootTables(HolderLookup.Provider pRegistries) {
+public class BlockLootTables extends BlockLootSubProvider {
+    public BlockLootTables(HolderLookup.Provider pRegistries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
     }
 
