@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -82,16 +82,17 @@ public class MysticShrubBlock extends CropBlock {
     }
 
     // On player interactions drops
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide && pState.getValue(AGE).equals(1)) {
-            // Drop item for age 1 and set the age to 0
-            pLevel.destroyBlock(pPos, true);
-            pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
 
-            return ItemInteractionResult.SUCCESS;
+    @Override
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!level.isClientSide && state.getValue(AGE).equals(1)) {
+            // Drop item for age 1 and set the age to 0
+            level.destroyBlock(pos, true);
+            level.setBlock(pos, state.setValue(AGE, 0), 2);
+
+            return InteractionResult.SUCCESS;
         }
-        return ItemInteractionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
     @Override

@@ -8,8 +8,8 @@ import net.nova.mysticshrubs.init.MSItems;
 import net.nova.mysticshrubs.init.Sounds;
 
 public class EmeraldShard extends BaseItem {
-    public EmeraldShard(Properties pProperties) {
-        super(pProperties);
+    public EmeraldShard(Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -19,8 +19,6 @@ public class EmeraldShard extends BaseItem {
 
     @Override
     public void playSound(Level level, Player player) {
-        if (!player.level().isClientSide) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.EMERALD_SHARD_USED.get(), SoundSource.PLAYERS, 0.5f, 1.0f);
-        }
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.EMERALD_SHARD_USED.get(), SoundSource.PLAYERS, 0.5f, 1.0f);
     }
 }

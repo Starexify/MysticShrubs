@@ -1,37 +1,21 @@
 package net.nova.mysticshrubs.init;
 
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.nova.mysticshrubs.block.MysticShrubBlock;
-
-import java.util.function.Supplier;
 
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
 public class MSBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
-    public static final DeferredBlock<Block> MYSTIC_SHRUB = registerBlock("mystic_shrub", () -> new MysticShrubBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> MYSTIC_SHRUB = BLOCKS.registerBlock("mystic_shrub", MysticShrubBlock::new, BlockBehaviour.Properties.of()
             .noCollission()
             .noOcclusion()
             .sound(SoundType.GRASS)
             .lightLevel(light -> 5)
-    ));
-
-    // Registries
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItems(name, toReturn);
-        return toReturn;
-    }
-
-    private static <T extends Block> DeferredItem<Item> registerBlockItems(String name, DeferredBlock<T> block) {
-        return MSItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-    }
+    );
 }

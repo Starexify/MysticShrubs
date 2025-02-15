@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/crop",
   "textures": {
-    "cross": "mystic_shrubs:block/mystic_shrub_stage0"
+    "crop": "mystic_shrubs:block/mystic_shrub_stage0"
   }
 }

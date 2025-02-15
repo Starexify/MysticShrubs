@@ -15,42 +15,35 @@
           "properties": {
             "age": "1"
           }
+        },
+        {
+          "chance": 0.25,
+          "condition": "minecraft:random_chance"
+        },
+        {
+          "chance": 0.6,
+          "condition": "minecraft:random_chance"
+        },
+        {
+          "chance": 0.7,
+          "condition": "minecraft:random_chance"
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "chance": 0.25,
-              "condition": "minecraft:random_chance"
-            }
-          ],
-          "name": "mystic_shrubs:heart_drop"
+          "name": "mystic_shrubs:emerald_piece"
         },
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "chance": 0.6,
-              "condition": "minecraft:random_chance"
-            }
-          ],
           "name": "mystic_shrubs:emerald_shard"
         },
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "chance": 0.7,
-              "condition": "minecraft:random_chance"
-            }
-          ],
-          "name": "minecraft:arrow",
-          "weight": 2
+          "name": "minecraft:arrow"
         }
       ],
-      "rolls": 1.0
+      "rolls": 2.0
     }
   ],
   "random_sequence": "mystic_shrubs:blocks/mystic_shrub"

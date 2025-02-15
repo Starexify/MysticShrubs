@@ -2,6 +2,7 @@ package net.nova.mysticshrubs.events;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -14,13 +15,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
-import net.nova.mysticshrubs.MysticShrubs;
 import net.nova.mysticshrubs.init.MSItems;
 import net.nova.mysticshrubs.init.Sounds;
 
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
-@EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = MODID)
 public class GameEvents {
     @SubscribeEvent
     public static void postPlayerPickup(ItemEntityPickupEvent.Post event) {
@@ -30,7 +30,9 @@ public class GameEvents {
 
         if (item.is(MSItems.EMERALD_SHARD) || item.is(MSItems.HEART_DROP)) {
             SoundEvent sound = item.is(MSItems.EMERALD_SHARD) ? Sounds.EMERALD_SHARD_PICKUP.get() : Sounds.COLLECT_HEART.get();
-            MysticShrubs.playSound(level, player, sound);
+            if (!level.isClientSide) {
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), sound, SoundSource.PLAYERS, 0.7f, 1.0f);
+            }
         }
     }
 
@@ -39,14 +41,16 @@ public class GameEvents {
     public static void prePlayerPickup(ItemEntityPickupEvent.Pre event) {
         ItemStack item = event.getItemEntity().getItem();
         Player player = event.getPlayer();
+        Level level = player.level();
 
         if (item.is(MSItems.HEART_DROP) && player.getHealth() < player.getMaxHealth() - 1.0f) {
             // Heal the player by 2 health points (one heart) and remove the item
             event.setCanPickup(TriState.FALSE);
             player.heal(2.0f);
             event.getItemEntity().discard();
-
-            MysticShrubs.playSound(player.level(), player, Sounds.COLLECT_HEART.get());
+            if (!level.isClientSide) {
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.COLLECT_HEART.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
+            }
         }
     }
 
@@ -56,7 +60,7 @@ public class GameEvents {
         LivingEntity entity = event.getEntity();
         LevelAccessor world = event.getEntity().level();
 
-        if (event != null && entity instanceof Monster) {
+        if (entity instanceof Monster) {
             double Random = Math.random();
             if (world instanceof ServerLevel level) {
                 if (Random <= 0.05) {

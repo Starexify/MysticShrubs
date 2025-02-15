@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.data.loot_table;
+package net.nova.mysticshrubs.data.loot;
 
 import com.google.common.collect.Sets;
 import net.minecraft.core.HolderLookup;
@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
 public class MSLootTableProvider extends LootTableProvider {
-
     public MSLootTableProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
         super(pOutput, Set.of(), List.of(new SubProviderEntry(BlockLootTables::new, LootContextParamSets.BLOCK)), pRegistries);
     }

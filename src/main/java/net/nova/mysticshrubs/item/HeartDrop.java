@@ -2,7 +2,7 @@ package net.nova.mysticshrubs.item;
 
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -11,32 +11,25 @@ import net.nova.mysticshrubs.init.MSItems;
 import net.nova.mysticshrubs.init.Sounds;
 
 public class HeartDrop extends Item {
-    public HeartDrop(Properties pProperties) {
-        super(pProperties);
+    public HeartDrop(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         // Check if the player has less than 2 health points
-        if (pPlayer.getHealth() < pPlayer.getMaxHealth() - 1.0f) {
-            if (pPlayer.getItemInHand(pUsedHand).getItem() == MSItems.HEART_DROP.get() && !pPlayer.isCreative()) {
-                if (!pLevel.isClientSide()) {
-                    // Remove the Heart Drop from the player's hand
-                    pPlayer.setItemInHand(pUsedHand, ItemStack.EMPTY);
-
-                    // Heal the player by 2 health points (one hearts)
-                    pPlayer.heal(2.0f);
-
-                    // Play sound regardless of health
-                    pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), Sounds.COLLECT_HEART.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+        if (player.getHealth() < player.getMaxHealth() - 1.0f) {
+            if (player.getItemInHand(hand).getItem().equals(MSItems.HEART_DROP.get()) && !player.isCreative()) {
+                if (!level.isClientSide) {
+                    player.setItemInHand(hand, ItemStack.EMPTY);
+                    player.heal(2.0f);
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.COLLECT_HEART.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
                 } else {
-                    // Play sound on the client
-                    pLevel.playLocalSound(pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), Sounds.COLLECT_HEART.get(), SoundSource.PLAYERS, 1.0f, 1.0f, false);
+                    level.playLocalSound(player.getX(), player.getY(), player.getZ(), Sounds.COLLECT_HEART.get(), SoundSource.PLAYERS, 1.0f, 1.0f, false);
                 }
             }
         }
 
-        // Return pass to indicate that the interaction didn't do anything
-        return InteractionResultHolder.pass(pPlayer.getItemInHand(pUsedHand));
+        return InteractionResult.PASS;
     }
 }

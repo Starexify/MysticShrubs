@@ -1,25 +1,24 @@
 package net.nova.mysticshrubs.item;
 
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class BaseItem extends Item {
+public abstract class BaseItem extends Item {
     protected final int requiredCount = 8;
 
-    public BaseItem(Properties pProperties) {
-        super(pProperties);
+    public BaseItem(Properties properties) {
+        super(properties);
     }
 
-    public ItemStack getResult() {
-        return null;
-    }
+    public abstract void playSound(Level level, Player player);
+    public abstract ItemStack getResult();
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack currentItem = new ItemStack(this);
         int itemCount = 0;
 
@@ -45,16 +44,11 @@ public class BaseItem extends Item {
                 }
             }
 
-            if (!player.getInventory().add(getResult())) {
-                player.drop(getResult(), false);
-            }
+            if (!player.getInventory().add(getResult())) player.drop(getResult(), false);
+            if (!level.isClientSide) playSound(level, player);
 
-            playSound(level, player);
-
-            return InteractionResultHolder.success(player.getItemInHand(usedHand));
+            return InteractionResult.SUCCESS;
         }
-        return InteractionResultHolder.pass(player.getItemInHand(usedHand));
+        return InteractionResult.PASS;
     }
-
-    public void playSound(Level level, Player player) {}
 }
