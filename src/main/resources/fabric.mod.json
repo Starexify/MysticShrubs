@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "mystic_shrubs",
+  "version": "${version}",
+  "name": "Mystic Shrubs",
+  "description": "Mystic Shrubs adds, you guessed, Mystic Shrubs into your world, you can find them and break them to give you loot!",
+  "authors": [
+    "ImVeryBad"
+  ],
+  "contact": {
+    "sources": "https://github.com/Starexify/MysticShrubs"
+  },
+  "license": "MIT",
+  "icon": "assets/mystic_shrubs/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.nova.mysticshrubs.MysticShrubs"
+    ],
+    "client": [
+      "net.nova.mysticshrubs.MSClient"
+    ],
+    "fabric-datagen": [
+      "net.nova.mysticshrubs.DataGenerators"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
