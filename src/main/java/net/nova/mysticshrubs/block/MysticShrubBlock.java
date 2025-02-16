@@ -82,7 +82,6 @@ public class MysticShrubBlock extends CropBlock {
     }
 
     // On player interactions drops
-
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide && state.getValue(AGE).equals(1)) {

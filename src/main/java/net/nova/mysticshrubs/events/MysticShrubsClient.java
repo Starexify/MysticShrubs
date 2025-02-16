@@ -1,20 +1,20 @@
 package net.nova.mysticshrubs.events;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.util.TriState;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
-import net.nova.mysticshrubs.MysticShrubs;
+import net.nova.mysticshrubs.init.MSBlocks;
 import net.nova.mysticshrubs.init.MSItems;
-import net.nova.mysticshrubs.init.Sounds;
 
 import java.util.function.Supplier;
 
@@ -22,6 +22,11 @@ import static net.nova.mysticshrubs.MysticShrubs.MODID;
 
 @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MysticShrubsClient {
+    @SubscribeEvent
+    public static void setupClient(FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(MSBlocks.MYSTIC_SHRUB.get(), RenderType.cutout());
+    }
+
     @SubscribeEvent
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tabKey = event.getTabKey();

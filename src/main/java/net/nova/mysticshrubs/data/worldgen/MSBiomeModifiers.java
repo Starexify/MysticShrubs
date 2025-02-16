@@ -1,10 +1,13 @@
 package net.nova.mysticshrubs.data.worldgen;
 
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
@@ -15,17 +18,16 @@ public class MSBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_MYSTIC_SHRUB = registerKey("add_mystic_shrub");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
-        var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-        var biomes = context.lookup(Registries.BIOME);
+        HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_MYSTIC_SHRUB, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(Tags.Biomes.IS_PLAINS),
                 HolderSet.direct(placedFeatures.getOrThrow(MSPlacedFeatures.MYSTIC_SHRUB_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-
     }
 
-    private static ResourceKey<BiomeModifier> registerKey(String name) {
+    public static ResourceKey<BiomeModifier> registerKey(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, MysticShrubs.rl(name));
     }
 }

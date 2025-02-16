@@ -1,4 +1,4 @@
-![Mystic Shrubs Logo](https://github.com/Starexify/MysticShrubs/blob/main/src/main/resources/mystic_shrubs_logo.png?raw=true)
+![Mystic Shrubs Logo](https://github.com/Starexify/MysticShrubs/blob/1.21.4-neo/src/main/resources/mystic_shrubs_logo.png?raw=true)
 
 <p align="center">
   <a href="https://www.curseforge.com/minecraft/mc-mods/mystic-shrubs"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
