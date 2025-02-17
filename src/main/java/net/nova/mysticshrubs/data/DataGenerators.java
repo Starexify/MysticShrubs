@@ -6,6 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.nova.mysticshrubs.data.loot.MSLootTableProvider;
+import net.nova.mysticshrubs.data.tags.MSBiomeTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -20,12 +21,10 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         event.addProvider(new LangProvider(output));
-
         event.addProvider(new MSModelProvider(output));
-
+        event.addProvider(new MSBiomeTagsProvider(output, lookupProvider));
         event.addProvider(new MSLootTableProvider(output, lookupProvider));
         event.addProvider(new DatapackProvider(output, lookupProvider));
-
         event.addProvider(new SoundsProvider(output));
     }
 }

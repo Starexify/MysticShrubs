@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -22,7 +21,7 @@ public class MSBiomeModifiers {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_MYSTIC_SHRUB, new BiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(Tags.Biomes.IS_PLAINS),
+                biomes.getOrThrow(MysticShrubs.CAN_PLACE_MYSTIC_SHRUBS),
                 HolderSet.direct(placedFeatures.getOrThrow(MSPlacedFeatures.MYSTIC_SHRUB_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
