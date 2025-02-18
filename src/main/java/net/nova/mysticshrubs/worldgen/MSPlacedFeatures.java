@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.data.worldgen;
+package net.nova.mysticshrubs.worldgen;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

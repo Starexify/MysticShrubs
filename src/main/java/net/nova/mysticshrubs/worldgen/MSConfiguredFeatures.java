@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.data.worldgen;
+package net.nova.mysticshrubs.worldgen;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -20,7 +20,7 @@ public class MSConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         context.register(MSConfiguredFeatures.MYSTIC_SHRUB_PATCH,
                 new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(12, 2, 0,
-                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(MSBlocks.MYSTIC_SHRUB.get().defaultBlockState().setValue(AGE, 1))), PlacementUtils.HEIGHTMAP_WORLD_SURFACE))
+                        PlacementUtils.inlinePlaced(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(MSBlocks.MYSTIC_SHRUB.defaultBlockState().setValue(AGE, 1))), PlacementUtils.HEIGHTMAP_WORLD_SURFACE))
                 ));
     }
 

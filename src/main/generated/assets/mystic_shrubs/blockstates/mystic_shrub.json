@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "mystic_shrubs:block/mystic_shrub_stage0"
+    },
+    "age=1": {
+      "model": "mystic_shrubs:block/mystic_shrub_stage1"
+    }
+  }
+}

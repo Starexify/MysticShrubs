@@ -1,20 +1,40 @@
 package net.nova.mysticshrubs.init;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.world.level.block.Block;
+import net.nova.mysticshrubs.MysticShrubs;
 import net.nova.mysticshrubs.item.EmeraldPiece;
 import net.nova.mysticshrubs.item.EmeraldShard;
 import net.nova.mysticshrubs.item.HeartDrop;
 
-import static  net.nova.mysticshrubs.MysticShrubs.MODID;
+import java.util.function.Function;
 
 public class MSItems {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
+    public static Item EMERALD_SHARD = registerItem("emerald_shard", EmeraldShard::new);
+    public static Item EMERALD_PIECE = registerItem("emerald_piece", EmeraldPiece::new);
+    public static Item HEART_DROP = registerItem("heart_drop", properties -> new HeartDrop(properties.stacksTo(1)));
+    public static Item MYSTICAL_SEED = registerItem("mystical_seed", createBlockItemWithUniqueName(MSBlocks.MYSTIC_SHRUB));
 
-    public static DeferredItem<Item> EMERALD_SHARD = ITEMS.registerItem("emerald_shard", EmeraldShard::new);
-    public static DeferredItem<Item> EMERALD_PIECE = ITEMS.registerItem("emerald_piece", EmeraldPiece::new);
-    public static DeferredItem<Item> HEART_DROP = ITEMS.registerItem("heart_drop", properties -> new HeartDrop(properties.stacksTo(1)));
-    public static DeferredItem<BlockItem> MYSTICAL_SEED = ITEMS.registerSimpleBlockItem("mystical_seed", MSBlocks.MYSTIC_SHRUB);
+    // Methods
+    public static <T extends Item> T registerItem(String name, Function<Item.Properties, T> factory) {
+        return register(name, factory, new Item.Properties());
+    }
+
+    public static <T extends Item> T register(String name, Function<Item.Properties, T> factory, Item.Properties settings) {
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, MysticShrubs.rl(name));
+        return Registry.register(BuiltInRegistries.ITEM, key, factory.apply(settings.setId(key)));
+    }
+
+    public static Function<Item.Properties, Item> createBlockItemWithUniqueName(Block block) {
+        return settings -> new BlockItem(block, settings.useBlockDescriptionPrefix());
+    }
+
+    public static void initialize() {
+        MysticShrubs.LOGGER.info("Registering Items");
+    }
 }

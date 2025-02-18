@@ -20,7 +20,7 @@ repositories {
 loom {
     splitEnvironmentSourceSets()
     mods {
-        "mystic_shrubs" {
+        "hexxit_gear" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }
@@ -37,8 +37,8 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modCompileOnly modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modCompileOnly modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 }
 
 processResources {
@@ -74,5 +74,6 @@ publishing {
         }
     }
 
-    repositories {}
+    repositories {
+    }
 }

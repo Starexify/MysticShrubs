@@ -14,11 +14,11 @@ public class EmeraldShard extends BaseItem {
 
     @Override
     public ItemStack getResult() {
-        return new ItemStack(MSItems.EMERALD_PIECE.get());
+        return new ItemStack(MSItems.EMERALD_PIECE);
     }
 
     @Override
     public void playSound(Level level, Player player) {
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.EMERALD_SHARD_USED.get(), SoundSource.PLAYERS, 0.5f, 1.0f);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), Sounds.EMERALD_SHARD_USED, SoundSource.PLAYERS, 0.5f, 1.0f);
     }
 }

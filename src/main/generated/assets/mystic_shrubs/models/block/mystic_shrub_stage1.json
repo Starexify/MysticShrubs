@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mystic_shrubs:block/mystic_shrub_stage1"
+  }
+}
