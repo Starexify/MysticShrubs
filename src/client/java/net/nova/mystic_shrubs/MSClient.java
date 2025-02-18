@@ -6,8 +6,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
-import net.nova.mysticshrubs.init.MSBlocks;
-import net.nova.mysticshrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.init.MSItems;
 
 public class MSClient implements ClientModInitializer {
     @Override

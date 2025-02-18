@@ -6,8 +6,8 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.nova.mysticshrubs.init.MSBlocks;
-import net.nova.mysticshrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.init.MSItems;
 
 public class MSModelProvider extends FabricModelProvider {
     public MSModelProvider(FabricDataOutput output) {

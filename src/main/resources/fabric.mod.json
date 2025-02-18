@@ -25,6 +25,7 @@
     ]
   },
   "mixins": [
+    "mystic_shrubs.mixins.json",
     {
       "config": "mystic_shrubs.client.mixins.json",
       "environment": "client"

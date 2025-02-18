@@ -9,8 +9,8 @@ import net.nova.mystic_shrubs.data.MSModelProvider;
 import net.nova.mystic_shrubs.data.MSWorldgenGenerator;
 import net.nova.mystic_shrubs.data.SoundsProvider;
 import net.nova.mystic_shrubs.data.loot.BlockLootTables;
-import net.nova.mysticshrubs.worldgen.MSConfiguredFeatures;
-import net.nova.mysticshrubs.worldgen.MSPlacedFeatures;
+import net.nova.mystic_shrubs.worldgen.MSConfiguredFeatures;
+import net.nova.mystic_shrubs.worldgen.MSPlacedFeatures;
 
 public class DataGenerators implements DataGeneratorEntrypoint {
     @Override

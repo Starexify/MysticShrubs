@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "net.nova.mystic_shrubs.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ItemEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

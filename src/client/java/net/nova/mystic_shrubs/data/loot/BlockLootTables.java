@@ -11,9 +11,9 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.nova.mysticshrubs.block.MysticShrubBlock;
-import net.nova.mysticshrubs.init.MSBlocks;
-import net.nova.mysticshrubs.init.MSItems;
+import net.nova.mystic_shrubs.block.MysticShrubBlock;
+import net.nova.mystic_shrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.init.MSItems;
 
 import java.util.concurrent.CompletableFuture;
 

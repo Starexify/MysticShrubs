@@ -3,9 +3,9 @@ package net.nova.mystic_shrubs.data;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
-import net.nova.mysticshrubs.init.MSBlocks;
-import net.nova.mysticshrubs.init.MSItems;
-import net.nova.mysticshrubs.init.Sounds;
+import net.nova.mystic_shrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.Sounds;
 
 import java.util.concurrent.CompletableFuture;
 

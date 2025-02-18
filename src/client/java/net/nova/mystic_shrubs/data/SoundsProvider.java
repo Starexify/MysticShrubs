@@ -9,14 +9,14 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.init.Sounds;
+import net.nova.mystic_shrubs.MysticShrubs;
+import net.nova.mystic_shrubs.init.Sounds;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import static net.nova.mysticshrubs.MysticShrubs.MODID;
+import static net.nova.mystic_shrubs.MysticShrubs.MODID;
 
 public class SoundsProvider implements DataProvider {
     public final FabricDataOutput output;
