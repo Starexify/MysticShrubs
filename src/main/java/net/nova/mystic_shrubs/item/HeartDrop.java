@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.item;
+package net.nova.mystic_shrubs.item;
 
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -7,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.nova.mysticshrubs.init.MSItems;
-import net.nova.mysticshrubs.init.Sounds;
+import net.nova.mystic_shrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.Sounds;
 
 public class HeartDrop extends Item {
     public HeartDrop(Properties properties) {

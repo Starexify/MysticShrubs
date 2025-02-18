@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -20,7 +20,7 @@ repositories {
 loom {
     splitEnvironmentSourceSets()
     mods {
-        "hexxit_gear" {
+        "mystic_shrubs" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }

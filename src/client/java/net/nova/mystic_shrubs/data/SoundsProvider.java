@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.data;
+package net.nova.mystic_shrubs.data;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

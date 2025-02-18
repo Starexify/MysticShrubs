@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.worldgen;
+package net.nova.mystic_shrubs.worldgen;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -7,7 +7,7 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.nova.mysticshrubs.MysticShrubs;
+import net.nova.mystic_shrubs.MysticShrubs;
 
 import java.util.List;
 

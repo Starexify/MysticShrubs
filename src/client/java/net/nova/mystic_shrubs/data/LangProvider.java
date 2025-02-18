@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.data;
+package net.nova.mystic_shrubs.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;

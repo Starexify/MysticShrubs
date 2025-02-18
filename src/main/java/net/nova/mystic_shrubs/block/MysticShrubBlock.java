@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.block;
+package net.nova.mystic_shrubs.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -19,11 +19,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.nova.mysticshrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.MSItems;
 import org.jetbrains.annotations.Nullable;
 
 public class MysticShrubBlock extends CropBlock {

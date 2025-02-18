@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.item;
+package net.nova.mystic_shrubs.item;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

@@ -1,9 +1,9 @@
-package net.nova.mysticshrubs.init;
+package net.nova.mystic_shrubs.init;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
-import net.nova.mysticshrubs.MysticShrubs;
+import net.nova.mystic_shrubs.MysticShrubs;
 
 public class Sounds {
     public static final SoundEvent EMERALD_SHARD_PICKUP = registerSoundEvents("emerald_shard_pickup");

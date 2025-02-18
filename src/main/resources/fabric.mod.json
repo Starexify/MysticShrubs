@@ -15,15 +15,21 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.nova.mysticshrubs.MysticShrubs"
+      "net.nova.mystic_shrubs.MysticShrubs"
     ],
     "client": [
-      "net.nova.mysticshrubs.MSClient"
+      "net.nova.mystic_shrubs.MSClient"
     ],
     "fabric-datagen": [
-      "net.nova.mysticshrubs.DataGenerators"
+      "net.nova.mystic_shrubs.DataGenerators"
     ]
   },
+  "mixins": [
+    {
+      "config": "mystic_shrubs.client.mixins.json",
+      "environment": "client"
+    }
+  ],
   "depends": {
     "fabricloader": ">=0.16.9",
     "minecraft": "~1.21.4",

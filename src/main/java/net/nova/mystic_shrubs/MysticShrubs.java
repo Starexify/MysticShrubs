@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs;
+package net.nova.mystic_shrubs;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -14,10 +14,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.nova.mysticshrubs.init.MSBlocks;
-import net.nova.mysticshrubs.init.MSItems;
-import net.nova.mysticshrubs.init.Sounds;
-import net.nova.mysticshrubs.worldgen.MSPlacedFeatures;
+import net.nova.mystic_shrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.init.MSItems;
+import net.nova.mystic_shrubs.init.Sounds;
+import net.nova.mystic_shrubs.worldgen.MSPlacedFeatures;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

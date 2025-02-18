@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs;
+package net.nova.mystic_shrubs;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

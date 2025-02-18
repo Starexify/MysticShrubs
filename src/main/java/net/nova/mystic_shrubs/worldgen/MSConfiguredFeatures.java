@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.worldgen;
+package net.nova.mystic_shrubs.worldgen;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -9,10 +9,10 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.init.MSBlocks;
+import net.nova.mystic_shrubs.MysticShrubs;
+import net.nova.mystic_shrubs.init.MSBlocks;
 
-import static net.nova.mysticshrubs.block.MysticShrubBlock.AGE;
+import static net.nova.mystic_shrubs.block.MysticShrubBlock.AGE;
 
 public class MSConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MYSTIC_SHRUB_PATCH = registerKey("mystic_shrub");

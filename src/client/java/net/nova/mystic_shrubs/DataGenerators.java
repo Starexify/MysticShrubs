@@ -1,14 +1,14 @@
-package net.nova.mysticshrubs;
+package net.nova.mystic_shrubs;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
-import net.nova.mysticshrubs.data.LangProvider;
-import net.nova.mysticshrubs.data.MSModelProvider;
-import net.nova.mysticshrubs.data.MSWorldgenGenerator;
-import net.nova.mysticshrubs.data.SoundsProvider;
-import net.nova.mysticshrubs.data.loot.BlockLootTables;
+import net.nova.mystic_shrubs.data.LangProvider;
+import net.nova.mystic_shrubs.data.MSModelProvider;
+import net.nova.mystic_shrubs.data.MSWorldgenGenerator;
+import net.nova.mystic_shrubs.data.SoundsProvider;
+import net.nova.mystic_shrubs.data.loot.BlockLootTables;
 import net.nova.mysticshrubs.worldgen.MSConfiguredFeatures;
 import net.nova.mysticshrubs.worldgen.MSPlacedFeatures;
 

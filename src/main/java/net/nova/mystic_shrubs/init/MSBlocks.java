@@ -1,4 +1,4 @@
-package net.nova.mysticshrubs.init;
+package net.nova.mystic_shrubs.init;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.nova.mysticshrubs.MysticShrubs;
-import net.nova.mysticshrubs.block.MysticShrubBlock;
+import net.nova.mystic_shrubs.MysticShrubs;
+import net.nova.mystic_shrubs.block.MysticShrubBlock;
 
 import java.util.function.Function;
 
