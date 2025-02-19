@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.nova.mystic_shrubs.MysticShrubs;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 public class MSBiomeTagsProvider extends FabricTagProvider<Biome> {
     public MSBiomeTagsProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -18,6 +19,6 @@ public class MSBiomeTagsProvider extends FabricTagProvider<Biome> {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateTagBuilder(MysticShrubs.CAN_PLACE_MYSTIC_SHRUBS).addTag(ConventionalBiomeTags.IS_PLAINS).addTag(BiomeTags.IS_SAVANNA).addTag(BiomeTags.IS_RIVER);
+        Stream.of(ConventionalBiomeTags.IS_PLAINS, BiomeTags.IS_SAVANNA, BiomeTags.IS_RIVER).forEach(biomeTagKey -> getOrCreateTagBuilder(MysticShrubs.CAN_PLACE_MYSTIC_SHRUBS).forceAddTag(biomeTagKey));
     }
 }

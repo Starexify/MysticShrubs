@@ -3,7 +3,8 @@
   "package": "net.nova.mystic_shrubs.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "MobMixin"
   ],
   "injectors": {
     "defaultRequire": 1
