@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
-import net.nova.mystic_shrubs.data.LangProvider;
-import net.nova.mystic_shrubs.data.MSModelProvider;
-import net.nova.mystic_shrubs.data.MSWorldgenGenerator;
-import net.nova.mystic_shrubs.data.SoundsProvider;
+import net.nova.mystic_shrubs.data.*;
 import net.nova.mystic_shrubs.data.loot.BlockLootTables;
 import net.nova.mystic_shrubs.worldgen.MSConfiguredFeatures;
 import net.nova.mystic_shrubs.worldgen.MSPlacedFeatures;
@@ -19,6 +16,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
 
         pack.addProvider(LangProvider::new);
         pack.addProvider(BlockLootTables::new);
+        pack.addProvider(MSBiomeTagsProvider::new);
         pack.addProvider(MSWorldgenGenerator::new);
         pack.addProvider(MSModelProvider::new);
         pack.addProvider(SoundsProvider::new);
