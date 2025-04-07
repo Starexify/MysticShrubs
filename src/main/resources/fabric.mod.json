@@ -4,9 +4,7 @@
   "version": "${version}",
   "name": "Mystic Shrubs",
   "description": "Mystic Shrubs adds, you guessed, Mystic Shrubs into your world, you can find them and break them to give you loot!",
-  "authors": [
-    "ImVeryBad"
-  ],
+  "authors": ["ImVeryBad"],
   "contact": {
     "sources": "https://github.com/Starexify/MysticShrubs"
   },
@@ -32,8 +30,8 @@
     }
   ],
   "depends": {
-    "fabricloader": ">=0.16.9",
-    "minecraft": "~1.21.4",
+    "fabricloader": ">=0.16.12",
+    "minecraft": "~1.21.5",
     "java": ">=21",
     "fabric-api": "*"
   }
